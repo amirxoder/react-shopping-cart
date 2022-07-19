@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { CartContext } from "../../context/CartContextProvider";
 import { shorten } from "../../helpers/functions";
 
 const Product = ({ productData: { title, image, price, id } }) => {
+  
   return (
     <div>
       <img src={image} style={{ width: "200px" }} alt="product-img" />

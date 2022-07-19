@@ -1,0 +1,50 @@
+.wrapper {
+  width: 100%;
+  height: calc(100vh - 3rem);
+  background-color: rgb(238, 238, 238);
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  gap: 2rem;
+}
+
+.shopping__price {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 1rem;
+  height: 150px;
+}
+
+.total__items {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.total__price {
+  font-size: 1.3rem;
+  color: crimson;
+  margin-bottom: 2rem;
+}
+
+.check__btn {
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #fff;
+  border: 1px solid transparent;
+  background-color: crimson;
+  padding: 5px 7px;
+  margin: 0 2rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+.check__btn:hover {
+  color: crimson;
+  background-color: transparent;
+  border: 1px solid crimson;
+}

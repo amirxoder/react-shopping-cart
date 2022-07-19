@@ -10,50 +10,65 @@ import { BsFillTrashFill } from "react-icons/bs";
 import { FaCartPlus } from "react-icons/fa";
 import { HiPlus, HiMinusSm } from "react-icons/hi";
 
+//style
+import styles from "./Product.module.css";
+
 const Product = ({ productData }) => {
   const { state, dispatch } = useContext(CartContext);
   const { title, image, price, id } = productData;
 
   return (
-    <div>
-      <img src={image} style={{ width: "200px" }} alt="product-img" />
-      <h3>{shorten(title)}</h3>
-      <p>{price}$</p>
-      <div>
-        <Link to={`/products/${id}`}>Details</Link>
-        {isInCart(state, id) ? (
-          <button
-            onClick={() =>
-              dispatch({ type: "INCREASE_ITEM", payload: productData })
-            }
-          >
-            <HiPlus />
-          </button>
-        ) : (
-          <button
-            onClick={() => dispatch({ type: "ADD_ITEM", payload: productData })}
-          >
-            <FaCartPlus />
-          </button>
-        )}
-        {quntityCounter(state, id) > 1 && (
-          <button
-            onClick={() =>
-              dispatch({ type: "DECREASE_ITEM", payload: productData })
-            }
-          >
-            <HiMinusSm />
-          </button>
-        )}
-        {quntityCounter(state, id) === 1 && (
-          <button
-            onClick={() =>
-              dispatch({ type: "REMOVE_ITEM", payload: productData })
-            }
-          >
-            <BsFillTrashFill />
-          </button>
-        )}
+    <div className={styles.cart__container}>
+      <img src={image} className={styles.img} alt="product-img" />
+      <div className={styles.desc__container}>
+        <h3>{shorten(title)}</h3>
+        <p className={styles.price}>{price}$</p>
+        <div className={styles.buttons__wrapper}>
+          <Link to={`/products/${id}`} className={styles.details__btn}>
+            Details
+          </Link>
+          <div className={styles.toggle__btn_wrapper}>
+            {isInCart(state, id) ? (
+              <button
+                className={styles.toggle__icon}
+                onClick={() =>
+                  dispatch({ type: "INCREASE_ITEM", payload: productData })
+                }
+              >
+                <HiPlus />
+              </button>
+            ) : (
+              <button
+                className={styles.toggle__icon}
+                onClick={() =>
+                  dispatch({ type: "ADD_ITEM", payload: productData })
+                }
+              >
+                <FaCartPlus />
+              </button>
+            )}
+            {quntityCounter(state, id) > 1 && (
+              <button
+                className={styles.toggle__icon}
+                onClick={() =>
+                  dispatch({ type: "DECREASE_ITEM", payload: productData })
+                }
+              >
+                <HiMinusSm />
+              </button>
+            )}
+            {quntityCounter(state, id) === 1 && (
+              <button
+                className={styles.toggle__icon}
+                onClick={() =>
+                  dispatch({ type: "REMOVE_ITEM", payload: productData })
+                }
+              >
+                <BsFillTrashFill />
+              </button>
+            )}
+          </div>
+        </div>
       </div>
     </div>
   );
